@@ -11,3 +11,7 @@ pub enum Edge {
     FwInv,
     InvFw,
 }
+pub struct Step {
+    id: u64,
+    rev: bool,
+}
