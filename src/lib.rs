@@ -4,4 +4,10 @@ pub mod gfa;
 pub struct Node {
     id: u64,
 }
-pub type Edge = u64;
+pub enum Edge {
+    /* lol */
+    FwFw,
+    InvInv,
+    FwInv,
+    InvFw,
+}
