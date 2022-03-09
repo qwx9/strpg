@@ -14,10 +14,10 @@ fn show(g: &UnGraphMap<Node, Edge>) {}
 
 fn init() {}
 
-fn main() -> Result<(), io::Error> {
+fn main() -> Result<(), String> {
     let args = Args::parse();
     init();
-    let g = readgfa(&args.gfa)?;
+    let (g, seq) = readgfa(&args.gfa)?;
     show(&g);
     Ok(())
 }
