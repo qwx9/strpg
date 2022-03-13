@@ -3,7 +3,7 @@ use log::*;
 use petgraph::graphmap::UnGraphMap;
 use rustc_hash::FxHashSet;
 use std::io::{self};
-use strpg::{gfa::*, *};
+use strpg::{draw::*, gfa::*, *};
 
 #[derive(clap::Parser)]
 struct Args {
@@ -11,16 +11,15 @@ struct Args {
     gfa: String,
 }
 
-fn show(g: &UnGraphMap<Node, Edge>) {}
-
 fn init() {
     env_logger::init();
 }
 
-fn main() -> Result<(), String> {
+#[macroquad::main("strpg")]
+async fn main() -> Result<(), String> {
     let args = Args::parse();
     init();
     let (g, seq, paths) = readgfa(&args.gfa)?;
-    show(&g);
+    draw(&g, &seq, &paths).await?;
     Ok(())
 }

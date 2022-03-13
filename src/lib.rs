@@ -1,3 +1,4 @@
+pub mod draw;
 pub mod gfa;
 
 #[derive(Clone, Copy, Eq, PartialEq, Ord, PartialOrd, Hash)]
