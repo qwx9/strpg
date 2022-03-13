@@ -20,8 +20,7 @@ fn init() {
 fn main() -> Result<(), String> {
     let args = Args::parse();
     init();
-    trace!("loading gfa file {}", args.gfa);
-    let (g, seq) = readgfa(&args.gfa)?;
+    let (g, seq, paths) = readgfa(&args.gfa)?;
     show(&g);
     Ok(())
 }
