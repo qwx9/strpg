@@ -1,4 +1,4 @@
-use strpg::{draw::*, gfa::*};
+use strpg::{draw::*, gfa::*, line::*};
 
 use std::io::{self};
 
@@ -21,7 +21,8 @@ fn init() {
 async fn main() -> Result<(), String> {
     let args = Args::parse();
     init();
+    let lf = CongaLine {};
     let (g, seq, paths) = readgfa(&args.gfa)?;
-    draw(&g, &seq, &paths).await?;
+    draw(&g, &seq, &paths, &lf).await?;
     Ok(())
 }
