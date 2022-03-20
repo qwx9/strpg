@@ -1,18 +1,6 @@
+pub mod dat;
 pub mod draw;
 pub mod gfa;
+pub mod layout;
 
-#[derive(Clone, Copy, Eq, PartialEq, Ord, PartialOrd, Hash)]
-pub struct Node {
-    id: u64,
-}
-pub enum Edge {
-    /* lol */
-    FwFw,
-    InvInv,
-    FwInv,
-    InvFw,
-}
-pub struct Step {
-    id: u64,
-    rev: bool,
-}
+pub use crate::{dat::*, draw::*, gfa::*};

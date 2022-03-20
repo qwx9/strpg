@@ -1,9 +1,11 @@
+use strpg::{draw::*, gfa::*};
+
+use std::io::{self};
+
 use clap::Parser;
 use log::*;
 use petgraph::graphmap::UnGraphMap;
 use rustc_hash::FxHashSet;
-use std::io::{self};
-use strpg::{draw::*, gfa::*, *};
 
 #[derive(clap::Parser)]
 struct Args {

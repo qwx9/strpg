@@ -1,10 +1,12 @@
-use crate::{Edge::*, *};
+use crate::dat::*;
+
+use std::fs::File;
+use std::io::{self, BufRead, BufReader};
+
 use log::{debug, info, trace, warn};
 use petgraph::graphmap::UnGraphMap;
 use regex::Regex;
 use rustc_hash::{FxHashMap, FxHashSet};
-use std::fs::File;
-use std::io::{self, BufRead, BufReader};
 
 /* GFAv1 only, with numerical segment id's */
 
@@ -55,10 +57,10 @@ fn readlink(
         return Err(format!("unknown node in link record: {}", l.join(" ")));
     }
     let w = match (l[1], l[3]) {
-        ("+", "+") => Ok(FwFw),
-        ("-", "-") => Ok(InvInv),
-        ("+", "-") => Ok(FwInv),
-        ("-", "+") => Ok(InvFw),
+        ("+", "+") => Ok(Edge::FwFw),
+        ("-", "-") => Ok(Edge::InvInv),
+        ("+", "-") => Ok(Edge::FwInv),
+        ("-", "+") => Ok(Edge::InvFw),
         _ => Err(format!("invalid link type: {}", l.join(" "))),
     }?;
     if g.contains_edge(u, v) {
